@@ -41,11 +41,11 @@ function Board() {
       <h1 className="text-dark title">Birthday Remainder</h1>
       <div className="board">
         <h2 className="upcoming text-dark">Recent</h2>
-        <List info={Recent(Info)}/>
+        <List info={Recent(Info)} />
         <h2 className="upcoming text-dark">Today</h2>
-        <List info={Today(Info)}/>
+        <List info={Today(Info)} />
         <h2 className="upcoming text-dark">Upcoming</h2>
-        <List info={Upcoming(Info,2)} upcoming = {true}/>
+        <List info={Upcoming(Info, 2)} upcoming={true} />
       </div>
     </main>
   );
@@ -59,7 +59,7 @@ function Today(person) {
   let currentDay = new Date().getDate();
   let currentMonth = new Date().getMonth();
 
-  let filterVariable = person.filter((data)=> {
+  let filterVariable = person.filter((data) => {
     let day = new Date(data.birthday).getDate();
     let month = new Date(data.birthday).getMonth();
 
@@ -79,7 +79,7 @@ function Upcoming(person, toMonth) {
     let month = new Date(data.birthday).getMonth();
     let day = new Date(data.birthday).getDate();
 
-    if(currentDay === day) return;
+    if (currentDay === day) return; // eslint-disable-line
     return month >= currentMonth && currentDay <= day + toMonth
   });
   return filter
@@ -94,7 +94,7 @@ function Recent(person) {
     let month = new Date(data.birthday).getMonth();
     let day = new Date(data.birthday).getDate();
 
-    if(currentDay === day) return;
+    if (currentDay === day) return; // eslint-disable-line
     return month >= currentMonth && currentDay >= day
   })
   return filter
